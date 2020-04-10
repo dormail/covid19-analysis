@@ -3,7 +3,7 @@ import pandas as pd
 
 from element_of import element_of
 
-def convert(source):
+def convert(source, createfile):
     # loading source data from excel sheet in pandas DataFrame
     source = pd.read_excel(source)
     
@@ -87,9 +87,11 @@ def convert(source):
             infected_sum.iat[i, j+1] = counter_infected
             deaths_sum.iat[i, j+1] = counter_deaths
 
+    if createfile:
+        infected_change.to_csv("infected_new.csv")
+        deaths_change.to_csv("deaths_new.csv")
+        infected_sum.to_csv("infected_overall.csv")
+        deaths_sum.to_csv("deaths_overall.csv")
 
-    infected_change.to_csv("infected_new.csv")
-    deaths_change.to_csv("deaths_new.csv")
-    infected_sum.to_csv("infected_overall.csv")
-    deaths_sum.to_csv("deaths_overall.csv")
-
+    data = [infected_change,deaths_change,infected_sum,deaths_sum]
+    return data
