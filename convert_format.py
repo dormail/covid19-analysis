@@ -91,5 +91,5 @@ def convert(source):
     infected_change.to_csv("infected_new.csv")
     deaths_change.to_csv("deaths_new.csv")
     infected_sum.to_csv("infected_overall.csv")
-    deaths_sum.to_csv("death_overall.csv")
+    deaths_sum.to_csv("deaths_overall.csv")
 
