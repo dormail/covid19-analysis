@@ -34,7 +34,7 @@ jobs:
     - name: test-run
       run: |
         python analyse.py
-    - name: Test with pytest
-      run: |
-        pip install pytest
-        pytest
+#    - name: Test with pytest
+#      run: |
+#        pip install pytest
+#        pytest
