@@ -34,6 +34,9 @@ jobs:
     - name: test-run
       run: |
         python analyse.py
+    - name: test-dpwnloader
+      run: |
+        python downloader.py
 #    - name: Test with pytest
 #      run: |
 #        pip install pytest
