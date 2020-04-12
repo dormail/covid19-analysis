@@ -2,6 +2,8 @@ import matplotlib.pyplot as mpl
 import numpy as np
 import pandas as pd
 
+from element_of import element_of
+
 # if there is only one country (the other functions are based on this one
 def plot_one(country,data):
     if type(country) != str:
@@ -29,10 +31,26 @@ def plot_one(country,data):
         else:
             break
 
-    fig, ax = mpl.subplots()
+    # setting up subplots
+    fig = mpl.figure()
+    fig.subplots_adjust(top=0.8)
+    ax1 = fig.add_subplot(211)
+
+    ax1.set_ylabel("no. of cases")
+    ax1.set_title("Confirmed cases of Covid-19 in Germany")
 
     x = np.linspace(0,len(infected),len(infected))
-    mpl.fill_between(x,infected,np.zeros(len(x)), 'tomato')
+    zeros = np.zeros(len(infected))
+    # filled area:
+    ax1.fill_between(x,infected,zeros, color='tomato')
+    ax1.fill_between(x,deaths,zeros, color='black')
+
+
+    # normal plotting:
+    #ax1.plot(x,infected, 'tomato')
+
+
+
     #ax.fill_between(x,deaths,np.zeros(len(x)), 'k')
 
 
@@ -49,6 +67,7 @@ def plot_country(country,data):
         plot_one(country, data)
     elif type(country) == list:
         plot_many(country,data)
+    
     mpl.show()
 
 
