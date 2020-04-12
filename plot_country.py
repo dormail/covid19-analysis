@@ -23,7 +23,7 @@ def plot_one(country,data):
 
     # data cleaning
     # removing initial spots that are smaller than minimum (to make graph more readable)
-    minimum =  500
+    minimum =  10000
     for i in range(0,len(infected)):
         if infected[0] < minimum:
             infected.pop(0)
@@ -37,7 +37,7 @@ def plot_one(country,data):
     ax1 = fig.add_subplot(211)
 
     ax1.set_ylabel("no. of cases")
-    ax1.set_title("Confirmed cases of Covid-19 in Germany")
+    ax1.set_title("Confirmed cases of Covid-19 in " + country)
 
     x = np.linspace(0,len(infected),len(infected))
     zeros = np.zeros(len(infected))
