@@ -23,7 +23,7 @@ def plot_one(country,data):
 
     # data cleaning
     # removing initial spots that are smaller than minimum (to make graph more readable)
-    minimum =  10000
+    minimum =  1000
     for i in range(0,len(infected)):
         if infected[0] < minimum:
             infected.pop(0)

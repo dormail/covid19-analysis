@@ -11,6 +11,6 @@ FilePlace = "https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-g
 # data = [infected_change,deaths_change,infected_sum,deaths_sum]
 data = convert(FilePlace, False)
 
-country = ["Germany","Italy"]
+country = ["Germany","Israel"]
 
 plot_country(country,data)
