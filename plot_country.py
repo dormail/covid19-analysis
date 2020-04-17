@@ -1,8 +1,10 @@
 import matplotlib.pyplot as mpl
 import numpy as np
 import math
+
 from element_of import element_of
 from comulate import comulate
+from minimum import minimum
 
 
 # if there is only one country (the other functions are based on this one
@@ -31,15 +33,12 @@ def plot_one(country,data):
 
     # data cleaning
     # removing initial spots that are smaller than minimum (to make graph more readable)
-    minimum =  1000
-    for i in range(0,len(inf_comul)):
-        if inf_comul[0] < minimum:
-            inf_comul = np.delete(inf_comul,0)
-            inf_change = np.delete(inf_change,0)
-            deaths_comul = np.delete(deaths_comul,0)
-            deaths_change = np.delete(deaths_change,0)
-        else:
-            break
+    minimum_inf =  1000
+    zeros, inf_comul = minimum(inf_comul, minimum_inf)
+    for i in range(0,zeros):
+        inf_change = np.delete(inf_change,0)
+        deaths_comul = np.delete(deaths_comul,0)
+        deaths_change = np.delete(deaths_change,0)
 
     # the change plot is to wavey to see real change
     # splitting up in x(splits) day-intervalls, to remove noise
