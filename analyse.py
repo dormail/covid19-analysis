@@ -1,6 +1,3 @@
-#import pandas as pd
-#import numpy as np
-
 from convert_format import convert
 from plot_country import plot_country
 
