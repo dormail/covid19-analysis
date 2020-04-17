@@ -47,7 +47,7 @@ def plot_one(country,data):
 
     # the change plot is to wavey to see real change
     # splitting up in x(splits) day-intervalls, to remove noise
-    splits = 4
+    splits = 5
     days = len(inf_comul)
     #print(days)
     three_day_intervalls = math.floor(days/splits)
@@ -67,7 +67,11 @@ def plot_one(country,data):
     tmp = 0
     for i in range(0,days % splits):
         tmp = tmp + inf_change[-1*(i+1)]
-    inf_cleaned[-1] = tmp
+    try:
+        inf_cleaned[-1] = tmp * splits / (days % splits)
+    except ZeroDivisionError:
+        inf_cleaned[-1] = tmp
+    
 
     # creating new array with cleaned data, i length of the 
     inf_change_cleaned = np.zeros(days, dtype='i')
