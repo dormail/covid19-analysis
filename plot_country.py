@@ -1,8 +1,8 @@
 import matplotlib.pyplot as mpl
 import numpy as np
-# import pandas as pd
 import math
 from element_of import element_of
+from comulate import comulate
 
 
 # if there is only one country (the other functions are based on this one
@@ -11,25 +11,23 @@ def plot_one(country,data):
         raise TypeError
 
     # extracting info about spcific country
-    inf_comul_pd = data[2].loc[data[2]["country/region"] == country]
     inf_change_pd = data[0].loc[data[2]["country/region"] == country]
-    deaths_comul_pd = data[3].loc[data[2]["country/region"] == country]
     deaths_change_pd = data[1].loc[data[2]["country/region"] == country]
 
     # scaling the change op by the factor n
     n = 5
 
     # loading country info into list
-    inf_comul = np.zeros(inf_comul_pd.shape[1], dtype='i')
-    inf_change = inf_comul.copy()
-    deaths_comul = inf_comul.copy()
-    deaths_change = inf_comul.copy()
+    days = inf_change_pd.shape[1]
+    inf_change = np.zeros(days, dtype='i')
+    deaths_change = inf_change.copy()
 
-    for i in range(1,inf_comul_pd.shape[1]):
-        inf_comul[i] = inf_comul_pd.iat[0,i]
-        inf_change[i] = n*inf_change_pd.iat[0,i]
-        deaths_comul[i] = deaths_comul_pd.iat[0,i]
-        deaths_change[i] = n*deaths_change_pd.iat[0,i]
+    for i in range(1,days):
+        inf_change[i] = inf_change_pd.iat[0,i]
+        deaths_change[i] = deaths_change_pd.iat[0,i]
+
+    inf_comul = comulate(inf_change)
+    deaths_comul = comulate(deaths_change)
 
     # data cleaning
     # removing initial spots that are smaller than minimum (to make graph more readable)
@@ -67,6 +65,7 @@ def plot_one(country,data):
         inf_cleaned[-1] = tmp
     # creating new array with cleaned data, i length of the 
     inf_change_cleaned = np.zeros(days, dtype='i')
+
 
     # setting up subplots
     fig = mpl.figure()
