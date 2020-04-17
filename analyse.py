@@ -1,5 +1,5 @@
-import pandas as pd
-import numpy as np
+#import pandas as pd
+#import numpy as np
 
 from convert_format import convert
 from plot_country import plot_country
@@ -11,6 +11,6 @@ FilePlace = "https://www.ecdc.europa.eu/sites/default/files/documents/COVID-19-g
 # data = [infected_change,deaths_change,infected_sum,deaths_sum]
 data = convert(FilePlace, False)
 
-country = ["Germany"]
+country = ["Germany", "United_States_of_America"]
 
-plot_country(country,data)
+plot_country(country, data)

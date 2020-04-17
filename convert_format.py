@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
-
 from element_of import element_of
+
 
 def convert(source, createfile):
     # loading source data from excel sheet in pandas DataFrame
@@ -10,8 +10,8 @@ def convert(source, createfile):
     # loading a list of countries from the xlsx
     temp = source["countriesAndTerritories"]
     countries = []
-    for i in range(0,len(temp)):
-        if element_of(temp[i],countries):
+    for i in range(0, len(temp)):
+        if element_of(temp[i], countries):
             continue
         else:
             countries.append(temp[i])
@@ -22,7 +22,7 @@ def convert(source, createfile):
     
     for i in range(0,len(temp[0])):
         tmp = [temp[0][i], temp[1][i], temp[2][i]]
-        if element_of(tmp,dates):
+        if element_of(tmp, dates):
             continue
         else:
             dates.append(tmp)
@@ -47,7 +47,7 @@ def convert(source, createfile):
     
     # adding columns for all the dates
     temp = np.zeros(len(dest["country/region"]))
-    for i in range(0,len(dates_string)):
+    for i in range(0, len(dates_string)):
         dest[dates_string[i]] = temp.copy()
     
     # loading data from source to dest
@@ -93,5 +93,5 @@ def convert(source, createfile):
         infected_sum.to_csv("infected_overall.csv")
         deaths_sum.to_csv("deaths_overall.csv")
 
-    data = [infected_change,deaths_change,infected_sum,deaths_sum]
+    data = [infected_change, deaths_change, infected_sum, deaths_sum]
     return data
