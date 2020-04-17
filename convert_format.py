@@ -32,11 +32,10 @@ def convert(source, createfile):
 
     # converting the list of dates from array type to string type
     temp = []
-    for i in range(0,len(dates)):
+    for i in range(0, len(dates)):
         temp.append(str(dates[i][0]) + "/" + str(dates[i][1]) + "/" + str(dates[i][2]))
 
     dates_string = temp.copy()
-
 
     # adding new DataFrame
     # dest is a template for later DataFrames in the analysis
@@ -59,14 +58,13 @@ def convert(source, createfile):
     deaths_sum = dest.copy()
 
     for i in range(0,len(countries)):
-        tmp = source.loc[source["countriesAndTerritories"] == countries[i], ["cases","deaths","countriesAndTerritories"]]
+        tmp = source.loc[source["countriesAndTerritories"] == countries[i], ["cases", "deaths", "countriesAndTerritories"]]
 
         cases = tmp["cases"].tolist()
         deaths = tmp["deaths"].tolist()
 
-
         # adding in zeros (not alle countries list all the dates)
-        for j in range(0,len(dates_string) - len(cases)):
+        for j in range(0, len(dates_string) - len(cases)):
             cases.append(0)
             deaths.append(0)
 
@@ -78,7 +76,7 @@ def convert(source, createfile):
         # using counters to get the accumulated table
         counter_deaths = 0
         counter_infected = 0
-        for j in range(0,len(cases)):
+        for j in range(0, len(cases)):
             counter_infected += cases[j]
             counter_deaths += deaths[j]
 
