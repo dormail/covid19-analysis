@@ -33,7 +33,7 @@ def plot_one(country,data):
 
     # data cleaning
     # removing initial spots that are smaller than minimum (to make graph more readable)
-    minimum_inf =  1000
+    minimum_inf =  10000
     zeros, inf_comul = minimum(inf_comul, minimum_inf)
     for i in range(0,zeros):
         inf_change = np.delete(inf_change,0)
